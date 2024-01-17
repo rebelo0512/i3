@@ -1,0 +1,346 @@
+ # i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+###############
+# i3 settings #
+###############
+
+## Set mod key (Mod1=, Mod4=)
+set $mod Mod4
+
+## Edit configuration file
+bindsym $mod+c exec i3-sensible-terminal -e bash -c 'i3-sensible-editor $HOME/.config/i3/config'
+
+## Reload the configuration file
+bindsym $mod+Shift+c reload
+
+## Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+## Exit i3 (logs you out of your X session)
+#bindsym $mod+Shift+e exec
+#"i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+## Exit/Suspend/Reboot/Shutdown alternatives
+bindsym $mod+Shift+e exec xfce4-session-logout
+
+## Lock screen
+#bindsym Mod1+Ctrl+l exec --no-startup-id i3lock -c "000000"
+bindsym Mod1+Ctrl+l exec --no-startup-id xflock4
+
+## i3bar (plus the system information i3status)
+## Disable on XFCE/KDE session
+bar {
+    position top
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    tray_output primary
+    #mode invisible
+    font pango:DejaVuSansMono Nerd Font 9
+    strip_workspace_numbers yes
+    separator_symbol ""
+    colors {
+        background         #000000
+        statusline         #ffffff
+        separator          #666666
+
+        focused_workspace	#da2263 #d70a53 #ffffff
+        active_workspace	#565656 #444444 #ffffff
+        inactive_workspace	#373737 #222222 #888888
+        urgent_workspace	#ec7ea4 #eb709b #ffffff
+
+       # focused_workspace  #4c7899 #285577 #ffffff
+       # active_workspace   #333333 #5f676a #ffffff
+       # inactive_workspace #333333 #222222 #888888
+       # urgent_workspace   #2f343a #900000 #ffffff
+       # binding_mode       #2f343a #900000 #ffffff
+    }
+}
+
+## Hide/unhide i3status bar
+#bindsym $mod+m bar mode toggle
+
+####################
+# Windows settings #
+####################
+
+## Font for window titles.
+font pango:monospace 8
+
+## Theme colors
+##class                 border  backgr  text    indicat child_border
+client.focused          #4c7899 #2277c6 #ffffff #3daee9 #2277c6
+client.focused_inactive #333333 #2d3339 #ffffff #484e50 #2d3339
+client.unfocused        #333333 #222222 #888888 #292d2e #222222
+client.urgent           #2f343a #900000 #ffffff #900000 #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
+client.background       #ffffff
+
+## Default border style for new windows (normal|none|pixel)
+default_border pixel 2
+default_floating_border normal
+
+## Hiding borders adjacent to the screen edges (none|vertical|horizontal|both|smart)
+hide_edge_borders smart
+
+## Change borders
+#bindsym $mod+n border normal
+#bindsym $mod+y border pixel 2
+#bindsym $mod+u border none
+bindsym $mod+b border toggle
+
+## kill focused window
+bindsym $mod+q kill
+bindsym Mod1+F4 kill
+
+## The middle button over a titlebar kills the window
+#bindsym --release button2 kill
+
+## The middle button and a modifer over any part of the window kills the window
+#bindsym --whole-window $mod+button2 kill
+
+## Constraining floating window size
+#floating_minimum_size 75 x 75
+#floating_maximum_size 900 x 600
+
+#####################
+# Split and Layouts #
+#####################
+
+## Set default desktop layout "stacking|tabbed" (default is tiling)
+#workspace_layout tabbed
+
+## Orientation for new workspaces (horizontal|vertical|auto)
+default_orientation auto
+
+## Split in horizontal/vertical orientationt
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+t split toggle
+
+## Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+## Fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+## Toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+## The right button toggles floating
+#bindsym $mod+button3 floating toggle
+
+#############################
+# Window Focus and Movement #
+#############################
+
+## Default focus to mouse (yes)
+focus_follows_mouse yes
+
+## Focus on window activation (smart|urgent|focus|none)
+focus_on_window_activation smart
+
+## Toggle sticky (show on all workspaces)
+bindsym $mod+Shift+s sticky toggle
+
+## Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+## Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+## Focus the parent container
+bindsym $mod+a focus parent
+
+## Focus the child container
+bindsym $mod+z focus child
+
+## Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+## Show the next scratchpad window or hide the focused scratchpad window.
+## If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+## Set keys for focus, movement, and resize directions
+set $left j
+set $down k
+set $up l
+set $right ccedilla
+
+## Change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+## Move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+## resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+    bindsym $left resize shrink width 10 px or 10 ppt
+    bindsym $down resize grow height 10 px or 10 ppt
+    bindsym $up resize shrink height 10 px or 10 ppt
+    bindsym $right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+## Jump to urgent window
+bindsym Mod1+Ctrl+a  focus
+
+#####################################
+# Workspaces settings and shortcuts #
+#####################################
+
+## Workspace names
+set $ws1 " 1"
+set $ws2 " 2"
+set $ws3 " 3"
+set $ws4 " 4"
+set $ws5 " 5"
+set $ws6 " 6"
+set $ws7 " 7"
+set $ws8 " 8"
+set $ws9 " 9"
+set $ws10 " 10"
+
+## Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+10 workspace $ws10
+
+## Move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10
+
+## Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+
+## Navigate workspaces next / previous
+bindsym Mod1+Ctrl+Right workspace next
+bindsym Mod1+Ctrl+Left workspace prev
+
+## Move focused container to workspaces next / previous
+bindsym $mod+Home move container to workspace prev; workspace prev
+bindsym $mod+End move container to workspace next; workspace next
+
+## Switch between the current and the previously focused one
+bindsym $mod+x workspace back_and_forth
+bindsym $mod+Shift+x move container to workspace back_and_forth; workspace back_and_forth
+
+## Switch to workspace with urgent window automatically
+#for_window  focus
+
+## Delaying urgency hint reset on workspace change (default: 500 ms)
+#force_display_urgency_hint 0 ms
+
+####################
+# Floating Windows #
+####################
+
+## Open specific applications in floating mode
+for_window [class="Clipgrab"] floating enable
+for_window [class="Galculator"] floating enable, border normal
+for_window [class="Gtkhash"] floating enable, border normal
+for_window [class="Pavucontrol"] floating enable, border normal
+for_window [class="qt5ct"] floating enable, sticky enable, border normal
+for_window [class="Qtconfig-qt4"] floating enable, sticky enable, border normal
+for_window [class="Simple-scan"] floating enable, border normal
+for_window [class="Skype"] floating enable, border normal
+for_window [class="Thus"] floating enable, border normal
+for_window [class="Timeset-gui"] floating enable, border normal
+for_window [class="Xfce4-appfinder"] floating enable
+for_window [class="Xfce4-sensors"] floating enable, border normal
+for_window [class="Xfce4-panel"] floating enable, border normal
+for_window [title="alsamixer"] floating enable, border normal
+for_window [title="File Transfer*"] floating enable, border normal
+for_window [title="MuseScore: Play Panel"] floating enable
+for_window [title="CopyQ"] floating enable
+for_window [window_role="About"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+#
+no_focus [window_role="pop-up"]
+no_focus [window_type="notification"]
+
+#######################################################
+# Applications launcher and others keyboard shortcuts #
+#######################################################
+## Start a terminal
+bindsym $mod+Return exec tilix
+
+## XFCE whisker popup menu
+#bindsym $mod+d exec --no-startup-id xfce4-popup-whiskermenu
+
+##########################
+# Autostart applications #
+##########################
+
+## Background
+#exec --no-startup-id nitrogen --restore
+#exec --no-startup-id feh --bg-scale /usr/share/pixmaps/wallpaper.jpg
+exec --no-startup-id xsetroot -solid "#222222"
+
+## Compositor (Compton)
+# exec --no-startup-id compton --backend glx --vsync opengl-swc --paint-on-overlay 
+exec_always --no-startup-id picom --experimental-backends --config ~/.config/picom/picom.conf 
+
+exec --no-startup-id shuf -e -n1 $HOME/Imagens/wallpapers/Nord-Wallpapers/wallpapers/* | xargs feh --bg-scale
+
+for_window [class="^.*"] border pixel 3 
+gaps inner 10
