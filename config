@@ -340,7 +340,7 @@ exec --no-startup-id xsetroot -solid "#222222"
 # exec --no-startup-id compton --backend glx --vsync opengl-swc --paint-on-overlay 
 exec_always --no-startup-id picom --experimental-backends --config ~/.config/picom/picom.conf 
 
-exec --no-startup-id shuf -e -n1 $HOME/Imagens/wallpapers/Nord-Wallpapers/wallpapers/* | xargs feh --bg-scale
+exec --no-startup-id shuf -e -n1 $HOME/.config/i3/wallpapers/* | xargs feh --bg-scale
 
 for_window [class="^.*"] border pixel 3 
 gaps inner 10
