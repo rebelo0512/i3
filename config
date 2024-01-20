@@ -14,7 +14,7 @@
 ###############
 
 ## Set mod key (Mod1=, Mod4=)
-set $mod Mod4
+set $mod Mod1
 
 ## Edit configuration file
 bindsym $mod+c exec i3-sensible-terminal -e bash -c 'i3-sensible-editor $HOME/.config/i3/config'
