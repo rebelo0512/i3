@@ -47,7 +47,7 @@ bar {
     strip_workspace_numbers yes
     separator_symbol ""
     colors {
-        background         #000000
+        background         #0f0f0f
         statusline         #ffffff
         separator          #666666
 
@@ -344,4 +344,7 @@ exec_always --no-startup-id picom --experimental-backends --config ~/.config/pic
 exec --no-startup-id shuf -e -n1 $HOME/.config/i3/wallpapers/* | xargs feh --bg-scale
 
 for_window [class="^.*"] border pixel 3 
-gaps inner 10
+gaps inner 7
+
+bindsym $mod+d exec ~/.config/i3/rofi/launchers/type-6/launcher.sh
+
