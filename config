@@ -45,19 +45,21 @@ bar {
     #mode invisible
     font pango:DejaVuSansMono Nerd Font 9
     strip_workspace_numbers yes
-    separator_symbol ""
+    separator_symbol ":|:"
+    padding 0px 15px 0px 0px
+
     colors {
-        background         #0f0f0f
+        background         #10051c
         statusline         #ffffff
         separator          #666666
 
-        focused_workspace	#da2263 #d70a53 #ffffff
-        active_workspace	#565656 #444444 #ffffff
+        # focused_workspace	#da2263 #d70a53 #ffffff
+        # active_workspace	#565656 #444444 #ffffff
         inactive_workspace	#373737 #222222 #888888
         urgent_workspace	#ec7ea4 #eb709b #ffffff
 
-       # focused_workspace  #4c7899 #285577 #ffffff
-       # active_workspace   #333333 #5f676a #ffffff
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
        # inactive_workspace #333333 #222222 #888888
        # urgent_workspace   #2f343a #900000 #ffffff
        # binding_mode       #2f343a #900000 #ffffff
@@ -347,4 +349,4 @@ for_window [class="^.*"] border pixel 3
 gaps inner 7
 
 bindsym $mod+d exec ~/.config/i3/rofi/launchers/type-6/launcher.sh
-
+bindsym $mod+p exec flameshot gui

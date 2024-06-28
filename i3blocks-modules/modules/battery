@@ -17,7 +17,7 @@ PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${PATH}"
 ###
 appname="battery"
 battery="${BLOCK_INSTANCE:-Battery 0}"
-format=" {percent}% ({time})"
+format="🔋{percent}%"
 
 
 ###
@@ -1044,7 +1044,7 @@ format="$( replace_placeholders "${format}" )"
 ###
 if [ "${pango}" = "1" ]; then
 	if [ "${format}" != "" ]; then
-		echo "<span color=\"${color}\">${format}</span>"
+		echo "${format}"
 	fi
 else
 	echo "${format}"	# Long output
