@@ -325,7 +325,7 @@ no_focus [window_type="notification"]
 # Applications launcher and others keyboard shortcuts #
 #######################################################
 ## Start a terminal
-bindsym $mod+Return exec tilix
+bindsym $mod+Return exec xfce4-terminal
 
 ## XFCE whisker popup menu
 #bindsym $mod+d exec --no-startup-id xfce4-popup-whiskermenu
